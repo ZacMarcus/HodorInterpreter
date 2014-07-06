@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Hodor Interpreter</title>
+
+<!-- jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"> -->
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+
+<!-- Google Analytics script -->
+<!-- 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35736701-1', 'zacmarcus.com');
+  ga('send', 'pageview');
+
+</script>
+-->
+
+<script type="text/javascript" src="hodor.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h2>Hodor Interpreter</h2>
+		<h4>Keep calm and Hodor Hodor</h4>
+	</div>
+	
+	<div class="panel panel-default" style="font-size:12px">
+		<div class="panel-heading">Hodor Commands</div>
+		<table class="table table-hover table-condensed">
+			<thead>
+				<th>Command</th><th>Meaning</th>
+			</thead>
+			<tbody>
+				<tr><td>Hodor. Hodor?</td><td>Increment the data pointer (to point to the next cell to the right).</td></tr>
+				<tr><td>Hodor? Hodor.</td><td>Decrement the data pointer (to point to the next cell to the left).</td></tr>
+				<tr><td>Hodor. Hodor.</td><td>Increment (increase by one) the byte at the data pointer.</td></tr>
+				<tr><td>Hodor! Hodor!</td><td>Decrement (decrease by one) the byte at the data pointer.</td></tr>
+				<tr><td>Hodor! Hodor.</td><td>Output the byte at the data pointer.</td></tr>
+				<tr><td>Hodor. Hodor!</td><td>Accept one byte of input, storing its value in the byte at the data pointer.</td></tr>
+				<tr><td>Hodor! Hodor?</td><td>If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching Hodor? Hodor! command.</td></tr>
+				<tr><td>Hodor? Hodor!</td><td>If the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching Hodor! Hodor? command.</td></tr>
+			</dl>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="btn-group">
+		<button type="button" class="btn btn-primary" name="helloworld" id="helloworld" onclick="insertHelloWorld();">Hello World Example</button>
+		<a class="btn btn-default" href="http://en.wikipedia.org/wiki/Hello_world_program">Wiki</a>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-primary" name="rot13" id="rot13" onclick="insertRot13();">Rot13 Example</button>
+		<a class="btn btn-default" href="http://en.wikipedia.org/wiki/ROT13">Wiki</a>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">Hodor Source Code</div>
+		<div class="alert alert-danger" id="errorAlert" style="display:none"></div>
+		<textarea class="form-control" style="resize:none" name="source" rows="7" id="source" onkeydown="enableInputBox();" oninput="enableInputBox();" placeholder="Hodor Source Code"></textarea>
+	</div>
+	
+	<div class="panel panel-default" id="inputDiv" style="display:none">
+		<div class="panel-heading">Hodor Input</div>
+		<textarea class="form-control" style="resize:none; display:none" name="input" rows="2" id="input" placeholder="Hodor Input"></textarea>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">Hodor Output</div>
+		<textarea class="form-control" style="resize:none" name="output" rows="2" id="output" placeholder="Hodor Output"></textarea>
+	</div>
+	
+	<div class="input-group pull-right">
+		<button type="button" class="btn btn-primary" name="hodor" id="hodor" onclick="interpret('source','output');">Hodor!</button>
+	</div>
+</div>
+</body>
+
+</html>
