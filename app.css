@@ -1,0 +1,16 @@
+.alignRight{
+	text-align:right; 
+	width: 59%;
+}
+
+.inLine{
+	display:inline-block;
+}
+
+.alignLeft{
+	width: 40%;
+}
+
+.tableFontSize{
+	font-size: 12px;
+}
